@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option go_package = "./pkg/proto/pb";
+
+service ReviewService{
+    rpc Add (AddReviewReq) returns (Response);
+    rpc Get (GetReviewsReq) returns (GetReviewsResp);
+}
+
+message review{
+    uint64 ProductID = 1;
+    string Content = 2;
+    uint32 Mark = 3;
+}
+
+message AddReviewReq{
+    review Review = 1;
+}
+
+message Response{
+    string Error = 1;
+    int32 Status = 2;
+}
+
+message GetReviewsReq{
+    uint64 ProductID = 1;
+}
+
+message GetReviewsResp{
+    repeated review Reviews = 1;
+    Response response = 2;
+}
