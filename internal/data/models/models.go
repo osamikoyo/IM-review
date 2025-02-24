@@ -25,4 +25,5 @@ func ToPB(r []Review) []*pb.Review {
 			Mark: uint32(rs.Mark),
 		})
 	}
+	return res
 }
